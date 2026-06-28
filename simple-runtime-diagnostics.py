@@ -20,7 +20,42 @@ transaction = {
     "from": wallet.address,
     "to": "0x0000000000000000000000000000000000000000",
     "value": 0,
-    "gas": 
+    "gas": 119000,
+    "gasPrice": client.to_wei(
+        5,
+        "gwei"
+    ),
+    "nonce": client.eth.get_transaction_count(
+        wallet.address
+    ),
+    "chainId": 1,
+}
+
+signed = wallet.sign_transaction(
+    transaction
+)
+
+raw = signed.raw_transaction.hex()
+
+print(
+    datetime.utcnow()
+)
+
+for item in [
+    note1,
+    note2,
+    note3,
+]:
+    print(item)
+
+print(
+    "Address:",
+    wallet.address
+)
+
+print(
+    "Online:",
+    client.is_connected()
 )
 
 print(
